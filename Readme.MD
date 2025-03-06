@@ -41,23 +41,23 @@ docker-compose up --build
 
 ### POST
 
-![Screenshot1](assets\1.png)
-![Screenshot2](assets\2.png)
+![Screenshot1](assets/1.png)
+![Screenshot2](assets/2.png)
 
 ---
 
 ### GET
-![Screenshot3](assets\3.png)
+![Screenshot3](assets/3.png)
 
 ---
 
 ### DELETE
-![Screenshot4](assets\4.png)
-![Screenshot5](assets\5.png)
+![Screenshot4](assets/4.png)
+![Screenshot5](assets/5.png)
 
 ---
 
 ### PUT
 
-![Screenshot6](assets\6.png)
-![Screenshot7](assets\7.png)
+![Screenshot6](assets/6.png)
+![Screenshot7](assets/7.png)
