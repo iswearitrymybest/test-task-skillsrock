@@ -14,7 +14,7 @@
 Для начала нужно использовать команду для клонирования проекта:
 
 ```sh
-git clone github.com/iswearitrymybest/test-task-skillsrock
+http://git clone github.com/iswearitrymybest/test-task-skillsrock
 ```
 Далее, весь проект запускается в docker compose:
 ```sh
