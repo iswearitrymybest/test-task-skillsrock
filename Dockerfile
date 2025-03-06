@@ -7,7 +7,7 @@ RUN CGO_ENABLED=1 go build -o main ./cmd/main.go
 
 
 FROM debian:bookworm-slim
-RUN apt-get update \
+RUN apt-get update -o Acquire::Check-Valid-Until=false \
     && apt-get install -y --no-install-recommends libx11-6 \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /
