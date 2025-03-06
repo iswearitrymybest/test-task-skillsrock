@@ -1,0 +1,159 @@
+basePath: /
+definitions:
+  handlers.CreateTaskRequest:
+    properties:
+      description:
+        type: string
+      title:
+        type: string
+    type: object
+  handlers.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  handlers.Task:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      status:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  handlers.UpdateTaskRequest:
+    properties:
+      description:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    type: object
+host: localhost:9000
+info:
+  contact: {}
+  description: API для управления задачами.
+  title: Task API
+  version: "1.0"
+paths:
+  /tasks:
+    get:
+      description: Возвращает все задачи из базы данных
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/handlers.Task'
+            type: array
+        "500":
+          description: Ошибка сервера
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Получить список задач
+      tags:
+      - tasks
+    post:
+      consumes:
+      - application/json
+      description: Создает новую задачу в базе данных
+      parameters:
+      - description: Создаваемая задача
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.CreateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/handlers.Task'
+        "400":
+          description: Ошибка валидации
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Ошибка сервера
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Создать задачу
+      tags:
+      - tasks
+  /tasks/{id}:
+    delete:
+      description: Удаляет задачу по ID
+      parameters:
+      - description: ID задачи
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "204":
+          description: Задача удалена
+        "400":
+          description: Неверный ID
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "404":
+          description: Задача не найдена
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Ошибка сервера
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Удалить задачу
+      tags:
+      - tasks
+    put:
+      consumes:
+      - application/json
+      description: Обновляет существующую задачу по ID
+      parameters:
+      - description: ID задачи
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Создаваемая задача
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.UpdateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.Task'
+        "400":
+          description: Ошибка валидации
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "404":
+          description: Задача не найдена
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+        "500":
+          description: Ошибка сервера
+          schema:
+            $ref: '#/definitions/handlers.ErrorResponse'
+      summary: Обновить задачу
+      tags:
+      - tasks
+swagger: "2.0"

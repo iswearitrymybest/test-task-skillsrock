@@ -1,0 +1,6 @@
+env: "local" #local, dev, prod
+storage_dsn: "postgres://postgres:yourpassword@postgres:5432/tasks?sslmode=disable"
+http_server:
+  address: "0.0.0.0:9000"
+  timeout: 4s
+  idle_timeout: 60s
